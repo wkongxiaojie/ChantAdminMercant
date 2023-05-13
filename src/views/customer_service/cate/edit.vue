@@ -27,12 +27,7 @@
                 <el-form-item label="分类名称" prop="name">
                     <el-input v-model="formData.name" placeholder="请输入分类" clearable />
                 </el-form-item>
-                <el-form-item
-
-                    label="是否显示"
-                    prop="is_show"
-                    required
-                >
+                <el-form-item label="是否显示" prop="is_show" required>
                     <div>
                         <el-radio-group v-model="formData.is_show">
                             <el-radio :label="1">显示</el-radio>

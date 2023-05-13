@@ -1,6 +1,5 @@
 import request from '@/utils/request'
 
-
 // 获取网站信息
 export function getConfig() {
     return request.get({ url: '/setting/getConfig' })

@@ -1,112 +1,115 @@
 <!-- 网站信息 -->
 <template>
-    <div class='setting_tab'>
-        <el-tabs v-model='activeName' type='card' class='setting-tabs'>
-            <el-tab-pane label='后台设置' name='backstage'>
+    <div class="setting_tab">
+        <el-tabs v-model="activeName" type="card" class="setting-tabs">
+            <el-tab-pane label="后台设置" name="backstage">
                 <el-form
-                    ref='formRef'
-                    :rules='rules'
-                    class='ls-form'
-                    :model='formData'
-                    label-width='120px'
+                    ref="formRef"
+                    :rules="rules"
+                    class="ls-form"
+                    :model="formData"
+                    label-width="120px"
                 >
-                    <el-form-item label='网站名称' prop='web_name'>
+                    <el-form-item label="网站名称" prop="web_name">
                         <div>
                             <el-input
-                                v-model.trim='formData.web_name'
-                                placeholder='请输入网站名称'
-                                maxlength='30'
+                                v-model.trim="formData.web_name"
+                                placeholder="请输入网站名称"
+                                maxlength="30"
                                 show-word-limit
                             />
                         </div>
                     </el-form-item>
 
-                    <el-form-item label='网站图标' prop='web_favicon' required>
+                    <el-form-item label="网站图标" prop="web_favicon" required>
                         <div>
-                            <material-picker v-model='formData.web_favicon' :limit='1' />
-                            <div class='form-tips'>
+                            <material-picker v-model="formData.web_favicon" :limit="1" />
+                            <div class="form-tips">
                                 建议尺寸：100*100像素，支持jpg，jpeg，png格式
                             </div>
                         </div>
                     </el-form-item>
-                    <el-form-item label='网站LOGO' prop='web_logo' required>
+                    <el-form-item label="网站LOGO" prop="web_logo" required>
                         <div>
-                            <material-picker v-model.trim='formData.web_logo' :limit='1' />
-                            <div class='form-tips'>
+                            <material-picker v-model.trim="formData.web_logo" :limit="1" />
+                            <div class="form-tips">
                                 建议尺寸：100*100像素，支持jpg，jpeg，png格式
                             </div>
                         </div>
                     </el-form-item>
-                    <el-form-item label='登录页广告图' prop='login_image' required>
+                    <el-form-item label="登录页广告图" prop="login_image" required>
                         <div>
-                            <material-picker v-model.trim='formData.login_image' :limit='1' />
-                            <div class='form-tips'>
+                            <material-picker v-model.trim="formData.login_image" :limit="1" />
+                            <div class="form-tips">
                                 建议尺寸：100*100像素，支持jpg，jpeg，png格式
                             </div>
                         </div>
                     </el-form-item>
 
-                    <el-form-item label='版权' prop='copyright'>
-                        <div class='w-80'>
+                    <el-form-item label="版权" prop="copyright">
+                        <div class="w-80">
                             <div>
-                                <el-input v-model='formData.copyright' placeholder='请输入版权' />
+                                <el-input v-model="formData.copyright" placeholder="请输入版权" />
                             </div>
                         </div>
                     </el-form-item>
-                    <el-form-item label='备案号' prop='icp_link'>
-                        <div class='w-80'>
+                    <el-form-item label="备案号" prop="icp_link">
+                        <div class="w-80">
                             <div>
-                                <el-input v-model.trim='formData.icp' placeholder='请输入备案号' />
+                                <el-input v-model.trim="formData.icp" placeholder="请输入备案号" />
                             </div>
                         </div>
                     </el-form-item>
                 </el-form>
             </el-tab-pane>
 
-            <el-tab-pane label='客服设置' name='merchant'>
+            <el-tab-pane label="客服设置" name="merchant">
                 <el-form
-                    ref='formRef'
-                    :rules='rules'
-                    class='ls-form'
-                    :model='formData'
-                    label-width='120px'
+                    ref="formRef"
+                    :rules="rules"
+                    class="ls-form"
+                    :model="formData"
+                    label-width="120px"
                 >
-                    <el-form-item label='自动回复' prop='auto_reply'>
+                    <el-form-item label="自动回复" prop="auto_reply">
                         <div>
                             <el-switch
-                                v-model='formData.auto_reply'
-                                :active-value='1'
-                                :inactive-value='0'
+                                v-model="formData.auto_reply"
+                                :active-value="1"
+                                :inactive-value="0"
                             />
-                            <span class='mt-1 ml-2'>{{
-                                    formData.auto_reply ? '开启' : '关闭'
-                                }}</span>
+                            <span class="mt-1 ml-2">{{
+                                formData.auto_reply ? '开启' : '关闭'
+                            }}</span>
 
-                            <div class='form-tips'>如果开启，则客服将自动回复</div>
+                            <div class="form-tips">如果开启，则客服将自动回复</div>
                         </div>
                     </el-form-item>
-                    <el-form-item label='欢迎语' prop='welcome'>
-                        <div class='w-1/2'>
+                    <el-form-item label="欢迎语" prop="welcome">
+                        <div class="w-1/2">
                             <el-input
-                                v-model.trim='formData.welcome'
-                                :value='formData.welcome'
-                                type='textarea'
+                                v-model.trim="formData.welcome"
+                                :value="formData.welcome"
+                                type="textarea"
                             />
                         </div>
                     </el-form-item>
-                    <el-form-item label='广告语' prop='ad_welcome'>
-                        <div class='w-1/2'>
+                    <el-form-item label="广告语" prop="ad_welcome">
+                        <div class="w-1/2">
                             <el-input
-                                v-model.trim='formData.ad_welcome'
-                                :value='formData.ad_welcome'
-                                type='textarea'
+                                v-model.trim="formData.ad_welcome"
+                                :value="formData.ad_welcome"
+                                type="textarea"
                             />
                         </div>
                     </el-form-item>
-                    <el-form-item label='登录页广告图' prop='login_image' required>
+                    <el-form-item label="登录页广告图" prop="login_image" required>
                         <div>
-                            <material-picker v-model.trim='formData.customer_service_login_image' :limit='1' />
-                            <div class='form-tips'>
+                            <material-picker
+                                v-model.trim="formData.customer_service_login_image"
+                                :limit="1"
+                            />
+                            <div class="form-tips">
                                 建议尺寸：100*100像素，支持jpg，jpeg，png格式
                             </div>
                         </div>
@@ -114,13 +117,13 @@
                 </el-form>
             </el-tab-pane>
             <footer-btns>
-                <el-button type='primary' @click='handleSubmit'>保存</el-button>
+                <el-button type="primary" @click="handleSubmit">保存</el-button>
             </footer-btns>
         </el-tabs>
     </div>
 </template>
 
-<script lang='ts' setup name='merchantSetting'>
+<script lang="ts" setup name="merchantSetting">
 import { getConfig, setConfig } from '@/api/setting/merchant'
 import useAppStore from '@/stores/modules/app'
 import type { FormInstance } from 'element-plus'
@@ -203,12 +206,12 @@ const handleSubmit = async () => {
 getData()
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .setting_tab {
-  background-color: #fff;
+    background-color: #fff;
 
-  .setting-tabs {
-    padding: 1vw !important;
-  }
+    .setting-tabs {
+        padding: 1vw !important;
+    }
 }
 </style>

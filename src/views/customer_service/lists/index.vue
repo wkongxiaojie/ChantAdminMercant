@@ -28,8 +28,8 @@
                 </el-form-item>
                 <el-form-item label="状态">
                     <el-select class="w-[280px]" v-model="formData.is_disable">
-                        <el-option label="启用" value="0" />
-                        <el-option label="禁用" value="1" />
+                        <el-option label="启用" value="0"/>
+                        <el-option label="禁用" value="1"/>
                     </el-select>
                 </el-form-item>
                 <el-form-item>
@@ -47,29 +47,29 @@
         <el-card v-loading="pager.loading" class="mt-4 !border-none" shadow="never">
             <el-button type="primary" @click="handleAdd">
                 <template #icon>
-                    <icon name="el-icon-Plus" />
+                    <icon name="el-icon-Plus"/>
                 </template>
                 新增
             </el-button>
             <el-button type="primary" @click="handlePdel">
                 <template #icon>
-                    <icon name="el-icon-Plus" />
+                    <icon name="el-icon-Plus"/>
                 </template>
                 删除
             </el-button>
             <div class="mt-4">
                 <el-table :data="pager.lists" size="large" @selection-change="handleSelection">
-                    <el-table-column type="selection" width="55" />
-                    <el-table-column label="ID" prop="id" min-width="60" />
+                    <el-table-column type="selection" width="55"/>
+                    <el-table-column label="ID" prop="id" min-width="60"/>
                     <el-table-column label="头像" min-width="100">
                         <template #default="{ row }">
                             <el-avatar :size="50" :src="row.avatar"></el-avatar>
                         </template>
                     </el-table-column>
-                    <el-table-column label="账号" prop="account" min-width="80" />
-                    <el-table-column label="手机号" prop="mobile" min-width="110" />
-                    <el-table-column label="最近登录时间" prop="login_time" min-width="120" />
-                    <el-table-column label="最近登录IP" prop="login_ip" min-width="100" />
+                    <el-table-column label="账号" prop="account" min-width="80"/>
+                    <el-table-column label="手机号" prop="mobile" min-width="110"/>
+                    <el-table-column label="最近登录时间" prop="login_time" min-width="120"/>
+                    <el-table-column label="最近登录IP" prop="login_ip" min-width="100"/>
 
                     <el-table-column label="状态" min-width="80">
                         <template #default="{ row }">
@@ -85,9 +85,12 @@
                             />
                         </template>
                     </el-table-column>
-                    <el-table-column label="创建时间" prop="create_time" min-width="120" />
+                    <el-table-column label="创建时间" prop="create_time" min-width="120"/>
                     <el-table-column label="操作" width="120" fixed="right">
                         <template #default="{ row }">
+                            <el-button type="primary" link @click="handleStaging(row.id)">
+                                工作台
+                            </el-button>
                             <el-button type="primary" link @click="handleEdit(row)">
                                 编辑
                             </el-button>
@@ -99,10 +102,10 @@
                 </el-table>
             </div>
             <div class="flex mt-4 justify-end">
-                <pagination v-model="pager" @change="getLists" />
+                <pagination v-model="pager" @change="getLists"/>
             </div>
         </el-card>
-        <edit-popup v-if="showEdit" ref="editRef" @success="getLists" @close="showEdit = false" />
+        <edit-popup v-if="showEdit" ref="editRef" @success="getLists" @close="showEdit = false"/>
     </div>
 </template>
 
@@ -110,12 +113,13 @@
 import {
     CustomerServiceEdit,
     CustomerServiceLists,
-    CustomerServiceDelete
+    CustomerServiceDelete, CustomerServiceStaging
 } from '@/api/customer_service'
 
-import { usePaging } from '@/hooks/usePaging'
+import {usePaging} from '@/hooks/usePaging'
 import feedback from '@/utils/feedback'
 import EditPopup from './edit.vue'
+
 
 interface CustomerService {
     id: string
@@ -135,7 +139,7 @@ const formData = reactive({
     account: ''
 })
 const showEdit = ref(false)
-const { pager, getLists, resetParams, resetPage } = usePaging({
+const {pager, getLists, resetParams, resetPage} = usePaging({
     fetchFun: CustomerServiceLists,
     params: formData
 })
@@ -176,9 +180,17 @@ const handleEdit = async (data: any) => {
     editRef.value?.setFormData(data)
 }
 
+// 进入客服工作台
+const handleStaging = async (customer_service_id: number) => {
+    const data = await CustomerServiceStaging(customer_service_id)
+    if (data.url) {
+        window.open(data.url)
+    }
+}
+
 const handleDelete = async (id: number) => {
     await feedback.confirm('确定要删除？')
-    await CustomerServiceDelete({ id }).finally(() => {
+    await CustomerServiceDelete({id}).finally(() => {
         getLists()
     })
 }

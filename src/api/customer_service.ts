@@ -7,22 +7,27 @@ export function CustomerServiceLists(params: any) {
 
 // 添加客服表
 export function CustomerServiceAdd(params: any) {
-    return request.post({ url: '/customer_service.CustomerService/add', params })
+    return request.post({url: '/customer_service.CustomerService/add', params})
 }
 
 // 编辑客服表
 export function CustomerServiceEdit(params: any) {
-    return request.post({ url: '/customer_service.CustomerService/edit', params })
+    return request.post({url: '/customer_service.CustomerService/edit', params})
+}
+
+// 进入客服工作台
+export function CustomerServiceStaging(params: any) {
+    return request.post({url: '/customer_service.CustomerService/staging', params})
 }
 
 // 删除客服表
 export function CustomerServiceDelete(params: any) {
-    return request.post({ url: '/customer_service.CustomerService/delete', params })
+    return request.post({url: '/customer_service.CustomerService/delete', params})
 }
 
 // 客服表详情
 export function CustomerServiceDetail(params: any) {
-    return request.get({ url: '/customer_service.CustomerService/detail', params })
+    return request.get({url: '/customer_service.CustomerService/detail', params})
 }
 
 // 客服分类列表

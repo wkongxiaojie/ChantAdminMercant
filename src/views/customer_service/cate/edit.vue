@@ -62,13 +62,13 @@ import type { FormInstance } from 'element-plus'
 import { MenuEnum } from '@/enums/appEnums'
 import Popup from '@/components/popup/index.vue'
 import { arrayToTree, treeToArray } from '@/utils/util'
-import { getModulesKey } from '@/router'
+import {getModulesKey} from '@/router'
 import {
     CustomerServiceCateAll,
     CustomerServiceCateEdit,
     CustomerServiceCateAdd,
     CustomerServiceCateDetail
-} from '@/api/customer_service'
+} from '@/api/merchant'
 
 const emit = defineEmits(['success', 'close'])
 const formRef = shallowRef<FormInstance>()

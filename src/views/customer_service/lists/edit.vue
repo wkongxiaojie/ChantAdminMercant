@@ -79,7 +79,7 @@ import {
     CustomerServiceAdd,
     CustomerServiceDetail,
     CustomerServiceEdit
-} from '@/api/customer_service'
+} from '@/api/merchant'
 
 const emit = defineEmits(['success', 'close'])
 const formRef = shallowRef<FormInstance>()

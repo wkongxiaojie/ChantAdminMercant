@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 // 客服表列表
 export function CustomerServiceLists(params: any) {
-    return request.get({ url: '/customer_service.CustomerService/lists', params })
+    return request.get({url: '/customer_service.CustomerService/lists', params})
 }
 
 // 添加客服表
@@ -16,8 +16,8 @@ export function CustomerServiceEdit(params: any) {
 }
 
 // 进入客服工作台
-export function CustomerServiceStaging(params: any) {
-    return request.post({url: '/customer_service.CustomerService/staging', params})
+export function CustomerServiceStaging(id: number) {
+    return request.get({url: '/customer_service.CustomerService/staging?customer_service_id=' + id})
 }
 
 // 删除客服表
@@ -32,25 +32,25 @@ export function CustomerServiceDetail(params: any) {
 
 // 客服分类列表
 export function CustomerServiceCateAll(params?: any) {
-    return request.get({ url: '/customer_service.CustomerServiceCate/lists', params })
+    return request.get({url: '/customer_service.CustomerServiceCate/lists', params})
 }
 
 // 客服分类增加
 export function CustomerServiceCateAdd(params?: any) {
-    return request.post({ url: '/customer_service.CustomerServiceCate/add', params })
+    return request.post({url: '/customer_service.CustomerServiceCate/add', params})
 }
 
 // 客服分类编辑
 export function CustomerServiceCateEdit(params?: any) {
-    return request.post({ url: '/customer_service.CustomerServiceCate/edit', params })
+    return request.post({url: '/customer_service.CustomerServiceCate/edit', params})
 }
 
 // 客服分类删除
 export function CustomerServiceCateDel(params?: any) {
-    return request.post({ url: '/customer_service.CustomerServiceCate/delete', params })
+    return request.post({url: '/customer_service.CustomerServiceCate/delete', params})
 }
 
 // 客服分类详情
 export function CustomerServiceCateDetail(params?: any) {
-    return request.get({ url: '/customer_service.CustomerServiceCate/detail', params })
+    return request.get({url: '/customer_service.CustomerServiceCate/detail', params})
 }

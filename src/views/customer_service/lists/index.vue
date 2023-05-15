@@ -4,26 +4,26 @@
             <el-form class="mb-[-16px]" :model="formData" inline>
                 <el-form-item label="客服账号">
                     <el-input
-                        v-model="formData.account"
-                        class="w-[280px]"
-                        clearable
-                        @keyup.enter="resetPage"
+                            v-model="formData.account"
+                            class="w-[280px]"
+                            clearable
+                            @keyup.enter="resetPage"
                     />
                 </el-form-item>
                 <el-form-item label="客服手机号">
                     <el-input
-                        v-model="formData.mobile"
-                        class="w-[280px]"
-                        clearable
-                        @keyup.enter="resetPage"
+                            v-model="formData.mobile"
+                            class="w-[280px]"
+                            clearable
+                            @keyup.enter="resetPage"
                     />
                 </el-form-item>
                 <el-form-item label="客服昵称">
                     <el-input
-                        v-model="formData.nickname"
-                        class="w-[280px]"
-                        clearable
-                        @keyup.enter="resetPage"
+                            v-model="formData.nickname"
+                            class="w-[280px]"
+                            clearable
+                            @keyup.enter="resetPage"
                     />
                 </el-form-item>
                 <el-form-item label="状态">
@@ -36,10 +36,10 @@
                     <el-button type="primary" @click="resetPage">查询</el-button>
                     <el-button @click="resetParams">重置</el-button>
                     <export-data
-                        class="ml-2.5"
-                        :fetch-fun="CustomerServiceLists"
-                        :params="formData"
-                        :page-size="pager.size"
+                            class="ml-2.5"
+                            :fetch-fun="CustomerServiceLists"
+                            :params="formData"
+                            :page-size="pager.size"
                     />
                 </el-form-item>
             </el-form>
@@ -61,7 +61,7 @@
                 <el-table :data="pager.lists" size="large" @selection-change="handleSelection">
                     <el-table-column type="selection" width="55"/>
                     <el-table-column label="ID" prop="id" min-width="60"/>
-                    <el-table-column label="头像" min-width="100">
+                    <el-table-column label="头像" min-width="80">
                         <template #default="{ row }">
                             <el-avatar :size="50" :src="row.avatar"></el-avatar>
                         </template>
@@ -69,24 +69,23 @@
                     <el-table-column label="账号" prop="account" min-width="80"/>
                     <el-table-column label="手机号" prop="mobile" min-width="110"/>
                     <el-table-column label="最近登录时间" prop="login_time" min-width="120"/>
-                    <el-table-column label="最近登录IP" prop="login_ip" min-width="100"/>
 
                     <el-table-column label="状态" min-width="80">
                         <template #default="{ row }">
                             <el-switch
-                                v-model="row.is_disable"
-                                :active-value="0"
-                                size="large"
-                                inline-prompt
-                                active-text="启用"
-                                :inactive-value="1"
-                                inactive-text="禁用"
-                                @change="changeStatus(row)"
+                                    v-model="row.is_disable"
+                                    :active-value="0"
+                                    size="large"
+                                    inline-prompt
+                                    active-text="启用"
+                                    :inactive-value="1"
+                                    inactive-text="禁用"
+                                    @change="changeStatus(row)"
                             />
                         </template>
                     </el-table-column>
                     <el-table-column label="创建时间" prop="create_time" min-width="120"/>
-                    <el-table-column label="操作" width="120" fixed="right">
+                    <el-table-column label="操作" width="200" fixed="right">
                         <template #default="{ row }">
                             <el-button type="primary" link @click="handleStaging(row.id)">
                                 工作台
@@ -114,7 +113,7 @@ import {
     CustomerServiceEdit,
     CustomerServiceLists,
     CustomerServiceDelete, CustomerServiceStaging
-} from '@/api/customer_service'
+} from '@/api/merchant'
 
 import {usePaging} from '@/hooks/usePaging'
 import feedback from '@/utils/feedback'
@@ -181,8 +180,8 @@ const handleEdit = async (data: any) => {
 }
 
 // 进入客服工作台
-const handleStaging = async (customer_service_id: number) => {
-    const data = await CustomerServiceStaging(customer_service_id)
+const handleStaging = async (id: number) => {
+    const data = await CustomerServiceStaging(id)
     if (data.url) {
         window.open(data.url)
     }

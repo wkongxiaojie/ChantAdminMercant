@@ -56,7 +56,7 @@ import type { ElTable } from 'element-plus'
 import { usePaging } from '@/hooks/usePaging'
 import EditPopup from './edit.vue'
 import feedback from '@/utils/feedback'
-import { CustomerServiceCateAll, CustomerServiceCateDel } from '@/api/customer_service'
+import {CustomerServiceCateAll, CustomerServiceCateDel} from '@/api/merchant'
 
 const tableRef = shallowRef<InstanceType<typeof ElTable>>()
 const editRef = shallowRef<InstanceType<typeof EditPopup>>()
